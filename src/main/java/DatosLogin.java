@@ -51,14 +51,15 @@ public class DatosLogin {
 
     private void createFile() {
         try (BufferedWriter escritor = new BufferedWriter(new FileWriter("login.txt"))){
-            escritor.write("usuario1;clave123\n" +
-                    "usuario2;abc456\n" +
-                    "nataly;clave123\n" +
-                    "catalina;gato456\n" +
-                    "donnie;perro789\n" +
-                    "kitty;miau321\n" +
-                    "isi;chao987\n" +
-                    "xiao;ola123");
+            escritor.write("""
+                    usuario1;clave123
+                    usuario2;abc456
+                    nataly;clave123
+                    catalina;gato456
+                    donnie;perro789
+                    kitty;miau321
+                    isi;chao987
+                    xiao;ola123""");
             escritor.flush();
         } catch (IOException e) {
             System.out.println("Error al escribir el archivo: " + e.getMessage());

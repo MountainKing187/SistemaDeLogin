@@ -72,8 +72,6 @@ public class ConsolaLogin {
         } else {
             System.out.println("Este usuario no existe.");
         }
-        // TODO: Pedir usuario y contraseña por consola
-        // TODO: Llamar a login.autenticar() y mostrar mensaje según resultado
     }
 
     private String[] manejarUsuario(){
