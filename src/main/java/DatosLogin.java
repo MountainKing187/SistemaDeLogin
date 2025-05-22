@@ -1,7 +1,5 @@
+import java.io.*;
 import java.util.ArrayList;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
 /**
  * Clase responsable de cargar las credenciales desde un archivo.
@@ -30,5 +28,23 @@ public class DatosLogin {
         } catch (IOException e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());
         }
+    }
+
+    private void checkFile() throws IOException {
+        File archivo = new File("login.txt");
+
+        if (!archivo.exists()) {
+            archivo.createNewFile(); // Crea el archivo si no existe
+            System.out.println("Archivo creado.");
+        }
+    }
+
+    private void createFile() throws IOException {
+        BufferedWriter escritor = new BufferedWriter(new FileWriter("salida.txt"));
+
+        escritor.write("Primera línea");
+        escritor.newLine();
+        escritor.write("Segunda línea");
+        escritor.flush();
     }
 }
