@@ -13,15 +13,24 @@ public class ConsolaLogin {
      * Controla el ciclo principal del menú del sistema.
      */
     public void menu() {
-        manejarLogin();
-        // TODO: Implementar ciclo del menú principal
+        int opcion ;
+        do{
+            mostrarOpciones();
+            opcion = obtenerOpcion();
+            ejecutarOpcion(opcion);
+        }while (opcion != 2);
     }
 
     /**
      * Muestra las opciones disponibles para el usuario.
      */
     private void mostrarOpciones() {
-        // TODO: Mostrar "1. Iniciar sesión", "2. Salir"
+        System.out.println("\n====================\n");
+        System.out.println("  Sistema de login");
+        System.out.println("\n====================\n");
+        System.out.println("1) Verificar Usuario");
+        System.out.println("2) Salir");
+        System.out.println("\n====================\n");
     }
 
     /**
@@ -29,8 +38,27 @@ public class ConsolaLogin {
      *
      * @param opcion opción ingresada por el usuario
      */
-    private void ejecutarOpcion(String opcion) {
-        // TODO: Si es "1" llamar a manejarLogin, si es "2" salir
+    private void ejecutarOpcion(int opcion) {
+        switch (opcion){
+            case 1 -> manejarLogin();
+            case 2 -> System.out.println("Adios");
+            default -> System.out.println("problema");
+        }
+    }
+
+    public int obtenerOpcion() {
+        String scannerString;
+        int opcion;
+
+        System.out.println("Elija su opcion:");
+        scannerString = scanner.next();
+        try {
+            opcion = Integer.parseInt(scannerString);
+        } catch (NumberFormatException nfe){
+            opcion = 0;
+            System.out.println("Ingreso un monto no valido");
+        }
+        return opcion;
     }
 
     /**
