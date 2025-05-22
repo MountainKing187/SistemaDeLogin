@@ -13,6 +13,7 @@ public class ConsolaLogin {
      * Controla el ciclo principal del menú del sistema.
      */
     public void menu() {
+        manejarLogin();
         // TODO: Implementar ciclo del menú principal
     }
 
@@ -36,15 +37,23 @@ public class ConsolaLogin {
      * Solicita usuario y contraseña, y muestra el resultado.
      */
     private void manejarLogin() {
+        String[] usuarioDatos = manejarUsuario();
+
+        if (login.autenticar(usuarioDatos[0],usuarioDatos[1],datos)){
+            System.out.println("Este usuario existe.");
+        } else {
+            System.out.println("Este usuario no existe.");
+        }
         // TODO: Pedir usuario y contraseña por consola
         // TODO: Llamar a login.autenticar() y mostrar mensaje según resultado
     }
 
     private String[] manejarUsuario(){
-        String[] datosUsuario = new String[2];
+        System.out.println("Escriba su usuario: ");
+        String nombre = scanner.next();
+        System.out.println("Escriba su contraseña: ");
+        String contrasena = scanner.next();
 
-
-
-        return datosUsuario;
+        return new String[]{nombre, contrasena};
     }
 }
