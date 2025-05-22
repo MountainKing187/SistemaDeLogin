@@ -39,4 +39,12 @@ public class ConsolaLogin {
         // TODO: Pedir usuario y contraseña por consola
         // TODO: Llamar a login.autenticar() y mostrar mensaje según resultado
     }
+
+    private String[] manejarUsuario(){
+        String[] datosUsuario = new String[2];
+
+
+
+        return datosUsuario;
+    }
 }

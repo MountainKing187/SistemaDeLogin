@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 /**
  * Clase encargada de verificar las credenciales del usuario.
  */
@@ -12,8 +14,10 @@ public class Login {
      * @return true si las credenciales son válidas, false en caso contrario
      */
     public boolean autenticar(String usuario, String clave, DatosLogin datos) {
-        // TODO: Crear String intento = usuario + ";" + clave
-        // TODO: Recorrer datos.credenciales y comparar con intento
+        String intento = usuario + ";" + clave;
+        for (String credenciales : datos.credenciales) {
+            if (Objects.equals(credenciales, intento)) return true;
+        }
         return false;
     }
 }
