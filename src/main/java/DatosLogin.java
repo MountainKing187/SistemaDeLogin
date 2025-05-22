@@ -18,6 +18,7 @@ public class DatosLogin {
      * Lee el archivo login.txt y agrega las líneas válidas a la lista de credenciales.
      */
     private void cargarUsuarios() {
+
         try (BufferedReader lector = new BufferedReader(new FileReader("login.txt"))) {
             String linea;
             while ((linea = lector.readLine()) != null) {
@@ -30,21 +31,37 @@ public class DatosLogin {
         }
     }
 
-    private void checkFile() throws IOException {
+    public void checkFile() throws IOException {
         File archivo = new File("login.txt");
-
         if (!archivo.exists()) {
-            archivo.createNewFile(); // Crea el archivo si no existe
-            System.out.println("Archivo creado.");
+            throw new IOException("Archivo no existe");
         }
     }
 
-    private void createFile() throws IOException {
-        BufferedWriter escritor = new BufferedWriter(new FileWriter("salida.txt"));
+    public void deleteFile(){
+        File archivo = new File("login.txt");
+        try {
+            checkFile();
+            archivo.delete();
 
-        escritor.write("Primera línea");
-        escritor.newLine();
-        escritor.write("Segunda línea");
-        escritor.flush();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void createFile() {
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter("login.txt"))){
+            escritor.write("usuario1;clave123\n" +
+                    "usuario2;abc456\n" +
+                    "nataly;clave123\n" +
+                    "catalina;gato456\n" +
+                    "donnie;perro789\n" +
+                    "kitty;miau321\n" +
+                    "isi;chao987\n" +
+                    "xiao;ola123");
+            escritor.flush();
+        } catch (IOException e) {
+            System.out.println("Error al escribir el archivo: " + e.getMessage());
+        }
     }
 }
