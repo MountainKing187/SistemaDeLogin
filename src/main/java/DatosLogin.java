@@ -45,11 +45,11 @@ public class DatosLogin {
             archivo.delete();
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Error al borrar el archivo: "+ e);
         }
     }
 
-    private void createFile() {
+    public void createFile() {
         try (BufferedWriter escritor = new BufferedWriter(new FileWriter("login.txt"))){
             escritor.write("""
                     usuario1;clave123

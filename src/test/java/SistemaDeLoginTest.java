@@ -29,9 +29,11 @@ class SistemaDeLoginTest {
     @Test
     public void ArchivoNoEncontrado(){
         DatosLogin datos = new DatosLogin();
+        datos.deleteFile();
         assertThrows(IOException.class, () -> {
             datos.checkFile();
         });
+        datos.createFile();
     }
 
 }
