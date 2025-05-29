@@ -1,8 +1,6 @@
 package Modelo;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 /**
@@ -38,6 +36,11 @@ public class DatosSesion {
      * Muestra todas las tareas almacenadas en el archivo.
      */
     public void mostrarTareas() {
+        try (BufferedReader lector = new BufferedReader(new FileReader(nombreArchivo))){
+            System.out.println(lector.readLine());
+        }catch (IOException e){
+            System.out.println(e);
+        }
         // TODO: Leer y mostrar cada línea del archivo.
     }
 }

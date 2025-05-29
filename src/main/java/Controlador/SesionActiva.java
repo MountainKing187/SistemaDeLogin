@@ -17,6 +17,7 @@ public class SesionActiva {
     public SesionActiva(String usuario) {
         this.usuario = usuario;
         this.datosSesion = new DatosSesion(usuario);
+        menuSesion();
     }
 
     /**

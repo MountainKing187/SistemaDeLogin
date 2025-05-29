@@ -2,7 +2,7 @@ package Vista;
 
 import Modelo.DatosLogin;
 import Controlador.Login;
-
+import Controlador.SesionActiva;
 import java.util.Scanner;
 
 /**
@@ -73,7 +73,7 @@ public class ConsolaLogin {
         String[] usuarioDatos = manejarUsuario();
 
         if (login.autenticar(usuarioDatos[0],usuarioDatos[1],datos)){
-            System.out.println("Este usuario existe.");
+            SesionActiva sesion = new SesionActiva(usuarioDatos[0]);
         } else {
             System.out.println("Este usuario no existe.");
         }
