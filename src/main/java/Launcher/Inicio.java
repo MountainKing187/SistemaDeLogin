@@ -1,3 +1,7 @@
+package Launcher;
+
+import Vista.ConsolaLogin;
+
 import java.io.IOException;
 
 public class Inicio {

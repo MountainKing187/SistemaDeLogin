@@ -1,3 +1,5 @@
+package Modelo;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -19,7 +21,7 @@ public class DatosLogin {
      */
     private void cargarUsuarios() {
 
-        try (BufferedReader lector = new BufferedReader(new FileReader("login.txt"))) {
+        try (BufferedReader lector = new BufferedReader(new FileReader("src/main/login.txt"))) {
             String linea;
             while ((linea = lector.readLine()) != null) {
                 if (linea.contains(";")){
@@ -32,14 +34,14 @@ public class DatosLogin {
     }
 
     public void checkFile() throws IOException {
-        File archivo = new File("login.txt");
+        File archivo = new File("src/main/login.txt");
         if (!archivo.exists()) {
             throw new IOException("Archivo no existe");
         }
     }
 
     public void deleteFile(){
-        File archivo = new File("login.txt");
+        File archivo = new File("src/main/login.txt");
         try {
             checkFile();
             archivo.delete();
@@ -50,7 +52,7 @@ public class DatosLogin {
     }
 
     public void createFile() {
-        try (BufferedWriter escritor = new BufferedWriter(new FileWriter("login.txt"))){
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter("src/main/login.txt"))){
             escritor.write("""
                     usuario1;clave123
                     usuario2;abc456

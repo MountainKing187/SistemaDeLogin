@@ -1,3 +1,7 @@
+package Controlador;
+
+import Modelo.DatosLogin;
+
 import java.util.Objects;
 
 /**

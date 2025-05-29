@@ -1,3 +1,8 @@
+package Vista;
+
+import Modelo.DatosLogin;
+import Controlador.Login;
+
 import java.util.Scanner;
 
 /**
@@ -28,7 +33,7 @@ public class ConsolaLogin {
         System.out.println("\n====================\n");
         System.out.println("  Sistema de login");
         System.out.println("\n====================\n");
-        System.out.println("1) Verificar Usuario");
+        System.out.println("1) Iniciar sesion");
         System.out.println("2) Salir");
         System.out.println("\n====================\n");
     }
