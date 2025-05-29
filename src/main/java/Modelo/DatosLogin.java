@@ -65,7 +65,6 @@ public class DatosLogin {
                     isi;chao987
                     xiao;ola123""");
             escritor.flush();
-            System.out.println("Se ha creado el archivo con exito.");
         } catch (IOException e) {
             System.out.println("Error al escribir el archivo: " + e.getMessage());
         }
