@@ -13,7 +13,15 @@ public class DatosLogin {
      * Constructor que inicializa las credenciales desde el archivo.
      */
     public DatosLogin() {
+        crearArchivoSiNoExiste();
         cargarUsuarios();
+    }
+
+    /**
+     * Devuelve la lista de credenciales cargadas.
+     */
+    public ArrayList<String> getCredenciales() {
+        return credenciales;
     }
 
     /**
@@ -33,20 +41,15 @@ public class DatosLogin {
         }
     }
 
-    public void checkFile() throws IOException {
+    public boolean checkFile(){
         File archivo = new File("src/main/login.txt");
-        if (!archivo.exists()) {
-            throw new IOException("Archivo no existe");
-        }
+        return archivo.exists();
     }
 
     public void deleteFile(){
         File archivo = new File("src/main/login.txt");
-        try {
-            checkFile();
+        if (checkFile()){
             archivo.delete();
-        } catch (IOException e) {
-            System.out.println("Error al borrar el archivo: "+ e);
         }
     }
 
@@ -66,5 +69,12 @@ public class DatosLogin {
         } catch (IOException e) {
             System.out.println("Error al escribir el archivo: " + e.getMessage());
         }
+    }
+
+    /**
+     * Crea el archivo login.txt si no existe.
+     */
+    private void crearArchivoSiNoExiste() {
+        if (!checkFile()) createFile();
     }
 }
