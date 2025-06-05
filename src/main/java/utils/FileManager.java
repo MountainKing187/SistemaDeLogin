@@ -1,9 +1,7 @@
 package utils;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 
 public class FileManager {
     private final String directory;
@@ -12,6 +10,21 @@ public class FileManager {
     public FileManager(String directory, String text){
         this.directory = directory;
         this.text = text;
+    }
+
+    public ArrayList<String> cargarLineas() {
+        ArrayList<String> lineas = new ArrayList<>();
+
+        try (BufferedReader lector = new BufferedReader(new FileReader("src/main/login.txt"))) {
+            String linea;
+            while ((linea = lector.readLine()) != null) {
+                lineas.add(linea);
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
+
+        return lineas;
     }
 
     public boolean checkFile(){
