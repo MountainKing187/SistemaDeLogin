@@ -14,6 +14,8 @@ public class Usuario {
      * @param clave clave del usuario
      */
     public Usuario(String nombre, String clave) {
+        this.nombre = nombre;
+        this.clave = clave;
         // TODO: Inicializar atributos nombre y clave
     }
 

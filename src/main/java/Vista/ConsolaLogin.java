@@ -72,7 +72,7 @@ public class ConsolaLogin {
     private void manejarLogin() {
         String[] usuarioDatos = manejarUsuario();
 
-        if (login.autenticar(usuarioDatos[0],usuarioDatos[1],datos)){
+        if (login.autenticar(usuarioDatos[0],usuarioDatos[1],datos) != null){
             SesionActiva sesion = new SesionActiva(usuarioDatos[0]);
         } else {
             System.out.println("Este usuario no existe.");

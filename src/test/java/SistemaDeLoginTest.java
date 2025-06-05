@@ -18,14 +18,14 @@ class SistemaDeLoginTest {
     public void usuarioExiste(){
         DatosLogin datos = new DatosLogin();
         Login login = new Login();
-        assertTrue(login.autenticar("usuario1","clave123",datos));
+        assertNotNull(login.autenticar("usuario1","clave123",datos));
     }
 
     @Test
     public void contraseñaIncorrecta(){
         DatosLogin datos = new DatosLogin();
         Login login = new Login();
-        assertFalse(login.autenticar("usuario1","contraseñaIncorrecta",datos));
+        assertNull(login.autenticar("usuario1","contraseñaIncorrecta",datos));
     }
 
     @Test
@@ -33,9 +33,9 @@ class SistemaDeLoginTest {
         DatosLogin datos = new DatosLogin();
 
         datos.manejoDeLoginText(true);
-        assertFalse(datos.loginExist);
+        assertFalse(datos.getLoginExist());
         datos.manejoDeLoginText(false);
-        assertTrue(datos.loginExist);
+        assertTrue(datos.getLoginExist());
     }
 
 }

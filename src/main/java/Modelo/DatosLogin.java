@@ -8,8 +8,9 @@ import java.util.ArrayList;
  * Clase responsable de cargar las credenciales desde un archivo.
  */
 public class DatosLogin {
-    public ArrayList<String> credenciales = new ArrayList<>();
-    public final FileManager loginText = new FileManager(
+    private final ArrayList<Usuario> usuarios = new ArrayList<>();
+    // public ArrayList<String> credenciales = new ArrayList<>();
+    private final FileManager loginText = new FileManager(
             "login.txt",
             """
                  usuario1;clave123
@@ -21,7 +22,7 @@ public class DatosLogin {
                  isi;chao987
                  xiao;ola123
                  admin;admin1""");
-    public boolean loginExist = loginText.checkFile();
+    private boolean loginExist = loginText.checkFile();
 
     /**
      * Constructor que inicializa las credenciales desde el archivo.
@@ -33,70 +34,22 @@ public class DatosLogin {
     }
 
     /**
-     * Devuelve la lista de credenciales cargadas.
-     */
-    public ArrayList<String> getCredenciales() {
-        return credenciales;
-    }
-
-    /**
-     * Lee el archivo login.txt y agrega las líneas válidas a la lista de credenciales.
+     * Lee el archivo login.txt y agrega las líneas válidas a la lista de usuarios.
      */
     private void cargarUsuarios() {
-        ArrayList<String> usuarios = loginText.cargarLineas();
-        for (String usuario : usuarios) {
-            if (usuario.contains(";")) credenciales.add(usuario);
-        }
-
-        /*
-        try (BufferedReader lector = new BufferedReader(new FileReader("src/main/login.txt"))) {
-            String linea;
-            while ((linea = lector.readLine()) != null) {
-                if (linea.contains(";")){
-                    credenciales.add(linea);
-                }
+        ArrayList<String> usuariosText = loginText.cargarLineas();
+        String nombre;
+        String clave;
+        for (String usuario : usuariosText) {
+            if (usuario.contains(";")) {
+                nombre = usuario.split(";")[0];
+                clave = usuario.split(";")[1];
+                System.out.println(nombre+" ; "+clave);
+                usuarios.add(new Usuario(nombre,clave));
             }
-        } catch (IOException e) {
-            System.out.println("Error al leer el archivo: " + e.getMessage());
-        }
-
-         */
-    }
-    /*
-    public boolean checkFile(){
-        File archivo = new File("src/main/login.txt");
-        return archivo.exists();
-    }
-
-    public void deleteFile(){
-        File archivo = new File("src/main/login.txt");
-        if (checkFile()){
-            archivo.delete();
         }
     }
 
-    public void createFile() {
-        try (BufferedWriter escritor = new BufferedWriter(new FileWriter("src/main/login.txt"))){
-            escritor.write("""
-                    usuario1;clave123
-                    usuario2;abc456
-                    nataly;clave123
-                    catalina;gato456
-                    donnie;perro789
-                    kitty;miau321
-                    isi;chao987
-                    xiao;ola123
-                    admin;admin1""");
-            escritor.flush();
-        } catch (IOException e) {
-            System.out.println("Error al escribir el archivo: " + e.getMessage());
-        }
-    }
-
-    private void crearArchivoSiNoExiste() {
-        if (!checkFile()) createFile();
-    }
-    */
     public void manejoDeLoginText(boolean deleteLogin){
         if(!loginExist) {
             loginText.createFile();
@@ -109,4 +62,13 @@ public class DatosLogin {
         loginExist = loginText.checkFile();
 
     }
+
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public boolean getLoginExist(){
+        return loginExist;
+    }
+
 }
