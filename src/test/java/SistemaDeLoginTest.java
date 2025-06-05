@@ -11,7 +11,7 @@ class SistemaDeLoginTest {
     @Test
     public void registrarUsuarios(){
         DatosLogin datos = new DatosLogin();
-        assertEquals(8, datos.credenciales.size());
+        assertEquals(9, datos.credenciales.size());
     }
 
     @Test
@@ -31,11 +31,11 @@ class SistemaDeLoginTest {
     @Test
     public void ArchivoNoEncontrado(){
         DatosLogin datos = new DatosLogin();
-        datos.deleteFile();
-        assertThrows(IOException.class, () -> {
-            datos.checkFile();
-        });
-        datos.createFile();
+
+        datos.manejoDeLoginText(true);
+        assertFalse(datos.loginExist);
+        datos.manejoDeLoginText(false);
+        assertTrue(datos.loginExist);
     }
 
 }

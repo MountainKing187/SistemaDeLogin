@@ -1,5 +1,6 @@
 package Modelo;
 
+import utils.FileManager;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -8,12 +9,26 @@ import java.util.ArrayList;
  */
 public class DatosLogin {
     public ArrayList<String> credenciales = new ArrayList<>();
+    public final FileManager loginText = new FileManager(
+            "login.txt",
+            """
+                 usuario1;clave123
+                 usuario2;abc456
+                 nataly;clave123
+                 catalina;gato456
+                 donnie;perro789
+                 kitty;miau321
+                 isi;chao987
+                 xiao;ola123
+                 admin;admin1""");
+    public boolean loginExist = loginText.checkFile();
 
     /**
      * Constructor que inicializa las credenciales desde el archivo.
      */
     public DatosLogin() {
-        crearArchivoSiNoExiste();
+        //crearArchivoSiNoExiste();
+        manejoDeLoginText(false);
         cargarUsuarios();
     }
 
@@ -40,7 +55,7 @@ public class DatosLogin {
             System.out.println("Error al leer el archivo: " + e.getMessage());
         }
     }
-
+    /*
     public boolean checkFile(){
         File archivo = new File("src/main/login.txt");
         return archivo.exists();
@@ -63,17 +78,27 @@ public class DatosLogin {
                     donnie;perro789
                     kitty;miau321
                     isi;chao987
-                    xiao;ola123""");
+                    xiao;ola123
+                    admin;admin1""");
             escritor.flush();
         } catch (IOException e) {
             System.out.println("Error al escribir el archivo: " + e.getMessage());
         }
     }
 
-    /**
-     * Crea el archivo login.txt si no existe.
-     */
     private void crearArchivoSiNoExiste() {
         if (!checkFile()) createFile();
+    }
+    */
+    public void manejoDeLoginText(boolean deleteLogin){
+        if(!loginExist) {
+            loginText.createFile();
+            System.out.println("Archivo login creado.");
+        }
+        else if (loginExist && deleteLogin) {
+            loginText.deleteFile();
+            System.out.println("Archivo login eliminado.");
+        }
+        loginExist = loginText.checkFile();
     }
 }
