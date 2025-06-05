@@ -100,5 +100,6 @@ public class DatosLogin {
             System.out.println("Archivo login eliminado.");
         }
         loginExist = loginText.checkFile();
+
     }
 }
