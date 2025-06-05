@@ -43,7 +43,12 @@ public class DatosLogin {
      * Lee el archivo login.txt y agrega las líneas válidas a la lista de credenciales.
      */
     private void cargarUsuarios() {
+        ArrayList<String> usuarios = loginText.cargarLineas();
+        for (String usuario : usuarios) {
+            if (usuario.contains(";")) credenciales.add(usuario);
+        }
 
+        /*
         try (BufferedReader lector = new BufferedReader(new FileReader("src/main/login.txt"))) {
             String linea;
             while ((linea = lector.readLine()) != null) {
@@ -54,6 +59,8 @@ public class DatosLogin {
         } catch (IOException e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());
         }
+
+         */
     }
     /*
     public boolean checkFile(){
