@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.io.*;
+import utils.FileManager;
 import java.util.Scanner;
 
 /**
@@ -8,9 +9,11 @@ import java.util.Scanner;
  */
 public class DatosSesion {
     private final String nombreArchivo;
+    private FileManager tareaText;
 
     public DatosSesion(String usuario) {
         this.nombreArchivo = usuario + "_todo.txt";
+        tareaText = new FileManager(nombreArchivo,"");
         crearArchivoSiNoExiste();
     }
 

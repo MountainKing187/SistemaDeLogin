@@ -4,18 +4,27 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FileManager {
-    private final String directory;
-    private final String text;
+    private String directory;
+    private String text;
+    private boolean isFileExist;
 
     public FileManager(String directory, String text){
         this.directory = directory;
         this.text = text;
     }
 
+    public void setDirectory(String directory){
+        this.directory = directory;
+    }
+
+    public void setText(String text){
+        this.text = text;
+    }
+
     public ArrayList<String> cargarLineas() {
         ArrayList<String> lineas = new ArrayList<>();
 
-        try (BufferedReader lector = new BufferedReader(new FileReader("src/main/login.txt"))) {
+        try (BufferedReader lector = new BufferedReader(new FileReader("src/main/"+directory))) {
             String linea;
             while ((linea = lector.readLine()) != null) {
                 lineas.add(linea);
@@ -25,6 +34,15 @@ public class FileManager {
         }
 
         return lineas;
+    }
+
+    public void añadirLinea(String linea){
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter("src/main/"+directory))){
+            escritor.write(linea);
+            escritor.flush();
+        } catch (IOException e) {
+            System.out.println("Error al escribir el archivo: " + e.getMessage());
+        }
     }
 
     public boolean checkFile(){
@@ -44,5 +62,10 @@ public class FileManager {
         } catch (IOException e) {
             System.out.println("Error al escribir el archivo: " + e.getMessage());
         }
+    }
+
+    public boolean getIsFileExist(){
+        this.isFileExist = checkFile();
+        return isFileExist;
     }
 }

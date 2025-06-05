@@ -19,15 +19,6 @@ public class Login {
      * @param datos objeto DatosLogin que contiene la lista de credenciales
      * @return true si las credenciales son válidas, false en caso contrario
      */
-    /*
-    public boolean autenticar(String usuario, String clave, DatosLogin datos) {
-        String intento = usuario + ";" + clave;
-        for (String credenciales : datos.credenciales) {
-            if (Objects.equals(credenciales, intento)) return true;
-        }
-        return false;
-    }
-    */
 
     public Usuario autenticar(String nombre, String clave, DatosLogin datos) {
         // TODO: Buscar si existe un objeto Usuario con esas credenciales.

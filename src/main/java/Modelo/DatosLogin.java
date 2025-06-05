@@ -22,7 +22,7 @@ public class DatosLogin {
                  isi;chao987
                  xiao;ola123
                  admin;admin1""");
-    private boolean loginExist = loginText.checkFile();
+    private boolean loginExist = loginText.getIsFileExist();
 
     /**
      * Constructor que inicializa las credenciales desde el archivo.
@@ -44,7 +44,6 @@ public class DatosLogin {
             if (usuario.contains(";")) {
                 nombre = usuario.split(";")[0];
                 clave = usuario.split(";")[1];
-                System.out.println(nombre+" ; "+clave);
                 usuarios.add(new Usuario(nombre,clave));
             }
         }
