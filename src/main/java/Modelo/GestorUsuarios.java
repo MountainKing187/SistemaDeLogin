@@ -1,5 +1,7 @@
 package Modelo;
 
+import utils.FileManager;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,13 +11,13 @@ import java.io.IOException;
  */
 public class GestorUsuarios {
     private final String archivo = "login.txt";
+    private final FileManager loginText;
 
     public GestorUsuarios() {
-        // TODO: Crear archivo si no existe.
+        loginText = new FileManager(archivo);
     }
 
-    public boolean registrar(String usuario, String clave) {
-        // TODO: Agregar usuario al archivo login.txt.
-        return false;
+    public void registrar(String usuario, String clave) {
+        loginText.añadirLinea(usuario+";"+clave);
     }
 }

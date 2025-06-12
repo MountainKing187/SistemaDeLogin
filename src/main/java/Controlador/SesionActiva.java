@@ -98,6 +98,11 @@ public class SesionActiva {
     }
 
     private void registrarUsuario() {
-        // TODO: Usar GestorUsuarios para registrar un nuevo usuario.
+        GestorUsuarios Usuarios = new GestorUsuarios();
+        System.out.println("Escriba el nombre del Usuario: ");
+        String usuario = scanner.nextLine();
+        System.out.println("Escriba la contraseña del usuario: ");
+        String clave = scanner.nextLine();
+        Usuarios.registrar(usuario,clave);
     }
 }
