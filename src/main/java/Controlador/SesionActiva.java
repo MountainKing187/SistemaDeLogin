@@ -28,7 +28,7 @@ public class SesionActiva {
         do{
             mostrarOpcion();
             opcion = obtenerOpcion();
-            if ((opcion == 3 && usuario.equals("admin") || opcion == 2 )){
+            if ((opcion == 4 && usuario.equals("admin") || opcion == 3 )){
                 break;
             } else if (usuario.equals("admin")) {
                 ejecutarOpcionAdmin(opcion);
@@ -56,7 +56,7 @@ public class SesionActiva {
         int opcion;
 
         System.out.println("Elija su opcion:");
-        String scannerString = scanner.next();
+        String scannerString = scanner.nextLine();
         try {
             opcion = Integer.parseInt(scannerString);
         } catch (NumberFormatException nfe){
@@ -69,7 +69,8 @@ public class SesionActiva {
     private void ejecutarOpcionUsuario(int opcion) {
         switch (opcion){
             case 1 -> escribirTarea();
-            case 2 -> System.out.println("Adios");
+            case 2 -> mostraTarea();
+            case 3 -> System.out.println("Adios");
             default -> System.out.println("problema");
         }
     }
@@ -77,14 +78,21 @@ public class SesionActiva {
     private void ejecutarOpcionAdmin(int opcion) {
         switch (opcion){
             case 1 -> escribirTarea();
-            case 2 -> registrarUsuario();
-            case 3 -> System.out.println("Adios");
+            case 2 -> mostraTarea();
+            case 3 -> registrarUsuario();
+            case 4 -> System.out.println("Adios");
             default -> System.out.println("problema");
         }
     }
 
     private void escribirTarea() {
-        // TODO: Pedir tarea al usuario y delegar a datosSesion.
+        System.out.print("Ingrese la nueva tarea: ");
+        String tarea = scanner.nextLine();
+        datosSesion.escribirTarea(tarea);
+    }
+
+    private void mostraTarea(){
+        datosSesion.mostrarTareas();
     }
 
     private void registrarUsuario() {

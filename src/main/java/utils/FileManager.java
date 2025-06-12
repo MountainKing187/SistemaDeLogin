@@ -5,20 +5,29 @@ import java.util.ArrayList;
 
 public class FileManager {
     private String directory;
-    private String text;
-    private boolean isFileExist;
+    private String text = "";
 
-    public FileManager(String directory, String text){
+    public FileManager(String directory){
         this.directory = directory;
-        this.text = text;
+        if(checkFile()){
+            for(String lineas : cargarLineas()) {
+                text = text +lineas+ "\n" ;
+            }
+            System.out.println(text);
+        }
+        else createFile();
     }
 
     public void setDirectory(String directory){
         this.directory = directory;
     }
 
-    public void setText(String text){
-        this.text = text;
+    public String getDirectory(){
+        return directory;
+    }
+
+    public String getText(){
+        return text;
     }
 
     public ArrayList<String> cargarLineas() {
@@ -37,8 +46,9 @@ public class FileManager {
     }
 
     public void añadirLinea(String linea){
+        text = text + linea;
         try (BufferedWriter escritor = new BufferedWriter(new FileWriter("src/main/"+directory))){
-            escritor.write(linea);
+            escritor.write(text);
             escritor.flush();
         } catch (IOException e) {
             System.out.println("Error al escribir el archivo: " + e.getMessage());
@@ -62,10 +72,5 @@ public class FileManager {
         } catch (IOException e) {
             System.out.println("Error al escribir el archivo: " + e.getMessage());
         }
-    }
-
-    public boolean getIsFileExist(){
-        this.isFileExist = checkFile();
-        return isFileExist;
     }
 }

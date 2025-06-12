@@ -10,19 +10,8 @@ import java.util.ArrayList;
 public class DatosLogin {
     private final ArrayList<Usuario> usuarios = new ArrayList<>();
     // public ArrayList<String> credenciales = new ArrayList<>();
-    private final FileManager loginText = new FileManager(
-            "login.txt",
-            """
-                 usuario1;clave123
-                 usuario2;abc456
-                 nataly;clave123
-                 catalina;gato456
-                 donnie;perro789
-                 kitty;miau321
-                 isi;chao987
-                 xiao;ola123
-                 admin;admin1""");
-    private boolean loginExist = loginText.getIsFileExist();
+    private final FileManager loginText = new FileManager("login.txt");
+    private boolean loginExist = loginText.checkFile();
 
     /**
      * Constructor que inicializa las credenciales desde el archivo.
