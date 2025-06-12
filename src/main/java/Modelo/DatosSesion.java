@@ -11,11 +11,17 @@ import java.util.Scanner;
  */
 public class DatosSesion {
     private final String nombreArchivo;
+    private ArrayList<Tarea> listaTareas = new ArrayList<Tarea>();
     private FileManager tareaText;
 
     public DatosSesion(String usuario) {
         this.nombreArchivo = usuario + "_todo.txt";
         tareaText = new FileManager(nombreArchivo);
+        cargarTareas();
+    }
+
+    public void cargarTareas(){
+        for (String tarea : tareaText.cargarLineas()) listaTareas.add(new Tarea(tarea));
     }
 
     /**
@@ -26,13 +32,15 @@ public class DatosSesion {
      */
     public void escribirTarea(String tarea) {
         tareaText.añadirLinea(tarea);
+        cargarTareas();
     }
 
     /**
      * Muestra todas las tareas almacenadas en el archivo.
      */
     public void mostrarTareas() {
-        String texto = tareaText.getText();
-        System.out.println(texto);
+        for (Tarea tarea: listaTareas){
+            System.out.println(tarea.getDescripcion());
+        }
     }
 }

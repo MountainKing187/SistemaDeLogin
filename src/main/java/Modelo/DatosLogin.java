@@ -9,16 +9,12 @@ import java.util.ArrayList;
  */
 public class DatosLogin {
     private final ArrayList<Usuario> usuarios = new ArrayList<>();
-    // public ArrayList<String> credenciales = new ArrayList<>();
     private final FileManager loginText = new FileManager("login.txt");
-    private boolean loginExist = loginText.checkFile();
 
     /**
      * Constructor que inicializa las credenciales desde el archivo.
      */
     public DatosLogin() {
-        //crearArchivoSiNoExiste();
-        manejoDeLoginText(false);
         cargarUsuarios();
     }
 
@@ -38,25 +34,8 @@ public class DatosLogin {
         }
     }
 
-    public void manejoDeLoginText(boolean deleteLogin){
-        if(!loginExist) {
-            loginText.createFile();
-            System.out.println("Archivo login creado.");
-        }
-        else if (loginExist && deleteLogin) {
-            loginText.deleteFile();
-            System.out.println("Archivo login eliminado.");
-        }
-        loginExist = loginText.checkFile();
-
-    }
-
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
-    }
-
-    public boolean getLoginExist(){
-        return loginExist;
     }
 
 }

@@ -46,7 +46,7 @@ public class FileManager {
     }
 
     public void añadirLinea(String linea){
-        text = text + linea;
+        text = text + linea +"\n";
         try (BufferedWriter escritor = new BufferedWriter(new FileWriter("src/main/"+directory))){
             escritor.write(text);
             escritor.flush();

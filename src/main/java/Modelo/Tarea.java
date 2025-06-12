@@ -12,7 +12,7 @@ public class Tarea {
      * @param descripcion contenido de la tarea
      */
     public Tarea(String descripcion) {
-        // TODO: Inicializar descripción
+        this.descripcion = descripcion;
     }
 
     public String getDescripcion() {

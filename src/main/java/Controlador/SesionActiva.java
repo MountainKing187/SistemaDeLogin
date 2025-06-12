@@ -45,10 +45,12 @@ public class SesionActiva {
         if (usuario.equals("admin")){
             System.out.println("1) Escribir tareas");
             System.out.println("2) Registrar usuarios");
-            System.out.println("3) Cerrar Sesion");
+            System.out.println("3) Mostrar tareas");
+            System.out.println("4) Cerrar Sesion");
         } else {
             System.out.println("1) Escribir tareas");
-            System.out.println("2) Cerrar Sesion");
+            System.out.println("2) Mostrar tareas");
+            System.out.println("3) Cerrar Sesion");
         }
     }
 
