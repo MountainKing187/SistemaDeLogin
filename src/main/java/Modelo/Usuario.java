@@ -6,6 +6,7 @@ package Modelo;
 public class Usuario {
     private String nombre;
     private String clave;
+    private Perfil perfil;
 
     /**
      * Constructor que inicializa los atributos del usuario.
@@ -13,9 +14,10 @@ public class Usuario {
      * @param nombre nombre del usuario
      * @param clave clave del usuario
      */
-    public Usuario(String nombre, String clave) {
+    public Usuario(String nombre, String clave, String correo) {
         this.nombre = nombre;
         this.clave = clave;
+        this.perfil = new Perfil(correo);
         // TODO: Inicializar atributos nombre y clave
     }
 

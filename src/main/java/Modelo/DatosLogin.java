@@ -29,7 +29,7 @@ public class DatosLogin {
             if (usuario.contains(";")) {
                 nombre = usuario.split(";")[0];
                 clave = usuario.split(";")[1];
-                usuarios.add(new Usuario(nombre,clave));
+                usuarios.add(new Usuario(nombre,clave,""));
             }
         }
     }
